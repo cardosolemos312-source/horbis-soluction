@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotéis e Alojamentos - Orbis Soluction</title>
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0d0d0d;
+color:white;
+}
+
+/* HEADER */
+
+header{
+background:black;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:2px solid gold;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:30px;
+font-weight:bold;
+color:gold;
+}
+
+.logo img{
+width:70px;
+height:70px;
+object-fit:contain;
+}
+
+.logo span{
+color:white;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:gold;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+
+background:
+linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
+url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero-content{
+max-width:850px;
+}
+
+.hero-content h1{
+font-size:70px;
+color:gold;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+line-height:1.8;
+color:#ddd;
+margin-bottom:35px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:gold;
+color:black;
+text-decoration:none;
+font-weight:bold;
+border-radius:10px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:white;
+transform:translateY(-5px);
+}
+
+/* PESQUISA */
+
+.search-box{
+background:#1a1a1a;
+width:85%;
+margin:auto;
+margin-top:-60px;
+padding:30px;
+border-radius:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+border:1px solid #333;
+position:relative;
+z-index:10;
+}
+
+.search-box input,
+.search-box select{
+padding:15px;
+background:#111;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+.search-box input:focus,
+.search-box select:focus{
+outline:none;
+border-color:gold;
+}
+
+.search-box button{
+background:gold;
+color:black;
+border:none;
+border-radius:10px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.search-box button:hover{
+background:white;
+}
+
+/* SECTION */
+
+.section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:45px;
+color:gold;
+margin-bottom:60px;
+position:relative;
+}
+
+.section-title::after{
+content:"";
+width:100px;
+height:4px;
+background:gold;
+display:block;
+margin:15px auto;
+border-radius:10px;
+}
+
+/* HOTÉIS */
+
+.hotel-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.hotel-card{
+background:#1a1a1a;
+border-radius:20px;
+overflow:hidden;
+border:1px solid #333;
+transition:0.4s;
+}
+
+.hotel-card:hover{
+transform:translateY(-10px);
+border-color:gold;
+box-shadow:0 0 20px rgba(255,215,0,0.15);
+}
+
+.hotel-card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.hotel-info{
+padding:25px;
+}
+
+.hotel-info h3{
+color:gold;
+font-size:28px;
+margin-bottom:15px;
+}
+
+.hotel-info p{
+color:#ccc;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.price{
+font-size:24px;
+font-weight:bold;
+color:gold;
+margin-bottom:15px;
+}
+
+.location{
+margin-bottom:20px;
+color:#bbb;
+}
+
+/* SERVIÇOS */
+
+.services{
+background:#111;
+}
+
+.service-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.service-box{
+background:#1a1a1a;
+padding:35px;
+border-radius:18px;
+text-align:center;
+border:1px solid #333;
+transition:0.3s;
+}
+
+.service-box:hover{
+transform:translateY(-10px);
+border-color:gold;
+}
+
+.service-box h3{
+color:gold;
+margin-bottom:15px;
+}
+
+.service-box p{
+color:#ccc;
+line-height:1.7;
+}
+
+/* CARROSSEL */
+
+.carousel{
+position:relative;
+max-width:1200px;
+margin:auto;
+overflow:hidden;
+border-radius:25px;
+border:2px solid gold;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+height:650px;
+object-fit:cover;
+filter:brightness(70%);
+}
+
+.caption{
+position:absolute;
+bottom:60px;
+left:60px;
+}
+
+.caption h2{
+font-size:45px;
+color:gold;
+margin-bottom:15px;
+}
+
+.caption p{
+font-size:20px;
+max-width:500px;
+line-height:1.7;
+}
+
+.prev,
+.next{
+cursor:pointer;
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+padding:18px;
+font-size:30px;
+font-weight:bold;
+background:rgba(0,0,0,0.5);
+color:white;
+border-radius:50%;
+transition:0.3s;
+}
+
+.prev{
+left:20px;
+}
+
+.next{
+right:20px;
+}
+
+.prev:hover,
+.next:hover{
+background:gold;
+color:black;
+}
+
+/* FORM */
+
+.form-section{
+padding:90px 8%;
+}
+
+.hotel-form{
+max-width:850px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:20px;
+background:#1a1a1a;
+padding:40px;
+border-radius:20px;
+border:1px solid #333;
+}
+
+.hotel-form input,
+.hotel-form select,
+.hotel-form textarea{
+padding:15px;
+background:#111;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+.hotel-form input:focus,
+.hotel-form select:focus,
+.hotel-form textarea:focus{
+outline:none;
+border-color:gold;
+}
+
+.hotel-form button{
+padding:16px;
+background:gold;
+color:black;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hotel-form button:hover{
+background:white;
+transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+padding:30px;
+text-align:center;
+border-top:2px solid gold;
+}
+
+footer p{
+color:#bbb;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+nav a{
+margin:10px;
+}
+
+.hero-content h1{
+font-size:45px;
+}
+
+.hero-content p{
+font-size:17px;
+}
+
+.slide img{
+height:400px;
+}
+
+.caption{
+left:20px;
+bottom:30px;
+}
+
+.caption h2{
+font-size:28px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+<img src="/imagens horbis/logo.png">
+Orbis <span>Soluction</span>
+</div>
+
+<nav>
+<a href="/">Home</a>
+<a href="/viagens">Viagens</a>
+<a href="/hoteis">Hotéis</a>
+<a href="/contacto">Contactos</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Hotéis & Alojamentos</h1>
+
+<p>
+Reserve hotéis luxuosos, apartamentos modernos e alojamentos exclusivos
+em Angola e no exterior com conforto, segurança e preços acessíveis.
+</p>
+
+<a href="/" class="btn">
+Explorar Hotéis
+</a>
+
+</div>
+
+</section>
+
+<!-- PESQUISA -->
+
+<div class="search-box">
+
+<input type="text" placeholder="Destino">
+
+<input type="date">
+
+<select>
+<option>Tipo de Alojamento</option>
+<option>Hotel</option>
+<option>Resort</option>
+<option>Apartamento</option>
+<option>Vivenda</option>
+</select>
+
+<button>Pesquisar</button>
+
+</div>
+
+<!-- CARROSSEL -->
+
+<section class="section">
+
+<h2 class="section-title">Destinos Premium</h2>
+
+<div class="carousel">
+
+<div class="slide fade">
+<img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1600">
+<div class="caption">
+<h2>Dubai Luxury Hotel</h2>
+<p>Experiência premium em hotéis de luxo.</p>
+</div>
+</div>
+
+<div class="slide fade">
+<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1600">
+<div class="caption">
+<h2>Resorts em Zanzibar</h2>
+<p>Praias paradisíacas e conforto absoluto.</p>
+</div>
+</div>
+
+<div class="slide fade">
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1600">
+<div class="caption">
+<h2>Hotéis em Portugal</h2>
+<p>Alojamentos modernos e sofisticados.</p>
+</div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+</section>
+
+<!-- HOTÉIS -->
+
+<section class="section" id="hoteis">
+
+<h2 class="section-title">Hotéis em Destaque</h2>
+
+<div class="hotel-container">
+
+<div class="hotel-card">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200">
+
+<div class="hotel-info">
+<h3>Hotel Dubai Palace</h3>
+<div class="price">Desde 350.000 Kz / noite</div>
+<div class="location">Dubai - Emirados Árabes</div>
+<p>
+Hotel cinco estrelas com piscina, spa e vista panorâmica.
+</p>
+<a href="/" class="btn">Reservar</a>
+</div>
+
+</div>
+
+<div class="hotel-card">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200">
+
+<div class="hotel-info">
+<h3>Resort Zanzibar Beach</h3>
+<div class="price">Desde 180.000 Kz / noite</div>
+<div class="location">Zanzibar - Tanzânia</div>
+<p>
+Resort à beira-mar com serviço premium e praia privada.
+</p>
+<a href="/" class="btn">Reservar</a>
+</div>
+
+</div>
+
+<div class="hotel-card">
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200">
+
+<div class="hotel-info">
+<h3>Hotel Lisboa Prime</h3>
+<div class="price">Desde 220.000 Kz / noite</div>
+<div class="location">Lisboa - Portugal</div>
+<p>
+Alojamento moderno próximo aos principais pontos turísticos.
+</p>
+<a href="/ class="btn">Reservar</a>
+</div>
+
+</div>
+
+<div class="hotel-card">
+<img src="https://images.unsplash.com/photo-1455587734955-081b22074882?q=80&w=1200">
+
+<div class="hotel-info">
+<h3>Orbis Luanda Hotel</h3>
+<div class="price">Desde 120.000 Kz / noite</div>
+<div class="location">Luanda - Angola</div>
+<p>
+Conforto, segurança e localização privilegiada em Luanda.
+</p>
+<a href="/" class="btn">Reservar</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVIÇOS -->
+
+<section class="section services">
+
+<h2 class="section-title">Nossos Serviços</h2>
+
+<div class="service-container">
+
+<div class="service-box">
+<h3>Reservas Online</h3>
+<p>
+Reserve hotéis e alojamentos de forma rápida e segura.
+</p>
+</div>
+
+<div class="service-box">
+<h3>Hotéis Premium</h3>
+<p>
+Parcerias com hotéis nacionais e internacionais.
+</p>
+</div>
+
+<div class="service-box">
+<h3>Apoio 24H</h3>
+<p>
+Suporte ao cliente antes, durante e após a reserva.
+</p>
+</div>
+
+<div class="service-box">
+<h3>Pacotes Exclusivos</h3>
+<p>
+Promoções especiais para férias e viagens empresariais.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FORMULÁRIO -->
+
+<section class="form-section" id="formulario">
+
+<h2 class="section-title">Solicitar Reserva</h2>
+
+<form class="hotel-form">
+
+<input type="text" placeholder="Nome Completo" required>
+
+<input type="tel" placeholder="Telefone" required>
+
+<input type="email" placeholder="Email" required>
+
+<select required>
+<option value="">Escolha o Hotel</option>
+<option>Hotel Dubai Palace</option>
+<option>Resort Zanzibar Beach</option>
+<option>Hotel Lisboa Prime</option>
+<option>Orbis Luanda Hotel</option>
+</select>
+
+<input type="date" required>
+
+<textarea rows="5" placeholder="Mensagem adicional"></textarea>
+
+<button type="submit">
+Reservar Agora
+</button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Orbis Soluction - Hotéis & Alojamentos
+</p>
+
+</footer>
+
+<!-- SCRIPT CARROSSEL -->
+
+<script>
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n){
+showSlides(slideIndex += n);
+}
+
+function showSlides(n){
+
+let i;
+let slides = document.getElementsByClassName("slide");
+
+if(n > slides.length){
+slideIndex = 1;
+}
+
+if(n < 1){
+slideIndex = slides.length;
+}
+
+for(i = 0; i < slides.length; i++){
+slides[i].style.display = "none";
+}
+
+slides[slideIndex-1].style.display = "block";
+
+}
+
+setInterval(() => {
+plusSlides(1);
+}, 5000);
+
+</script>
+
+</body>
+</html>
