@@ -3134,3 +3134,454 @@ background:white;
 transition:0.4s;
 }
 
+
+
+
+
+
+/*HOTEL*/
+
+
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0d0d0d;
+color:white;
+}
+
+/* HEADER */
+
+header{
+background:black;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:2px solid gold;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:30px;
+font-weight:bold;
+color:gold;
+}
+
+.logo img{
+width:70px;
+height:70px;
+object-fit:contain;
+}
+
+.logo span{
+color:white;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+
+background:
+linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
+url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero-content{
+max-width:850px;
+}
+
+.hero-content h1{
+font-size:70px;
+color:gold;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+line-height:1.8;
+color:#ddd;
+margin-bottom:35px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:gold;
+color:black;
+text-decoration:none;
+font-weight:bold;
+border-radius:10px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:white;
+transform:translateY(-5px);
+}
+
+/* PESQUISA */
+
+.search-box{
+background:#1a1a1a;
+width:85%;
+margin:auto;
+margin-top:-60px;
+padding:30px;
+border-radius:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+border:1px solid #333;
+position:relative;
+z-index:10;
+}
+
+.search-box input,
+.search-box select{
+padding:15px;
+background:#111;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+.search-box input:focus,
+.search-box select:focus{
+outline:none;
+border-color:gold;
+}
+
+.search-box button{
+background:gold;
+color:black;
+border:none;
+border-radius:10px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.search-box button:hover{
+background:white;
+}
+
+/* SECTION */
+
+.section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:45px;
+color:gold;
+margin-bottom:60px;
+position:relative;
+}
+
+.section-title::after{
+content:"";
+width:100px;
+height:4px;
+background:gold;
+display:block;
+margin:15px auto;
+border-radius:10px;
+}
+
+/* HOTÉIS */
+
+.hotel-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.hotel-card{
+background:#1a1a1a;
+border-radius:20px;
+overflow:hidden;
+border:1px solid #333;
+transition:0.4s;
+}
+
+.hotel-card:hover{
+transform:translateY(-10px);
+border-color:gold;
+box-shadow:0 0 20px rgba(255,215,0,0.15);
+}
+
+.hotel-card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.hotel-info{
+padding:25px;
+}
+
+.hotel-info h3{
+color:gold;
+font-size:28px;
+margin-bottom:15px;
+}
+
+.hotel-info p{
+color:#ccc;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.price{
+font-size:24px;
+font-weight:bold;
+color:gold;
+margin-bottom:15px;
+}
+
+.location{
+margin-bottom:20px;
+color:#bbb;
+}
+
+/* SERVIÇOS */
+
+.services{
+background:#111;
+}
+
+.service-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.service-box{
+background:#1a1a1a;
+padding:35px;
+border-radius:18px;
+text-align:center;
+border:1px solid #333;
+transition:0.3s;
+}
+
+.service-box:hover{
+transform:translateY(-10px);
+border-color:gold;
+}
+
+.service-box h3{
+color:gold;
+margin-bottom:15px;
+}
+
+.service-box p{
+color:#ccc;
+line-height:1.7;
+}
+
+/* CARROSSEL */
+
+.carousel{
+position:relative;
+max-width:1200px;
+margin:auto;
+overflow:hidden;
+border-radius:25px;
+border:2px solid gold;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+height:650px;
+object-fit:cover;
+filter:brightness(70%);
+}
+
+.caption{
+position:absolute;
+bottom:60px;
+left:60px;
+}
+
+.caption h2{
+font-size:45px;
+color:gold;
+margin-bottom:15px;
+}
+
+.caption p{
+font-size:20px;
+max-width:500px;
+line-height:1.7;
+}
+
+.prev,
+.next{
+cursor:pointer;
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+padding:18px;
+font-size:30px;
+font-weight:bold;
+background:rgba(0,0,0,0.5);
+color:white;
+border-radius:50%;
+transition:0.3s;
+}
+
+.prev{
+left:20px;
+}
+
+.next{
+right:20px;
+}
+
+.prev:hover,
+.next:hover{
+background:gold;
+color:black;
+}
+
+/* FORM */
+
+.form-section{
+padding:90px 8%;
+}
+
+.hotel-form{
+max-width:850px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:20px;
+background:#1a1a1a;
+padding:40px;
+border-radius:20px;
+border:1px solid #333;
+}
+
+.hotel-form input,
+.hotel-form select,
+.hotel-form textarea{
+padding:15px;
+background:#111;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+.hotel-form input:focus,
+.hotel-form select:focus,
+.hotel-form textarea:focus{
+outline:none;
+border-color:gold;
+}
+
+.hotel-form button{
+padding:16px;
+background:gold;
+color:black;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hotel-form button:hover{
+background:white;
+transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+padding:30px;
+text-align:center;
+border-top:2px solid gold;
+}
+
+footer p{
+color:#bbb;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+nav a{
+margin:10px;
+}
+
+.hero-content h1{
+font-size:45px;
+}
+
+.hero-content p{
+font-size:17px;
+}
+
+.slide img{
+height:400px;
+}
+
+.caption{
+left:20px;
+bottom:30px;
+}
+
+.caption h2{
+font-size:28px;
+}
+
+}
+
+
+
